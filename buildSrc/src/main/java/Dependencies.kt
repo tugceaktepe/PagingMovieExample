@@ -7,6 +7,26 @@ object Dependencies {
     private val material = "com.google.android.material:material:${Versions.material}"
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    private val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+
+    //Lifecycle
+    private val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycle}"
+    private val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"
+
+
+    //network
+    private val retrofit =  "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    private val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    private val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogging}"
+    private val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.moshiConveter}"
+
+    //Coroutines
+    private val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    private val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
+    //Glide
+    private val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    private val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     //test libs
     private val junit = "junit:junit:${Versions.junit}"
@@ -18,6 +38,17 @@ object Dependencies {
         add(appcompat)
         add(material)
         add(constraintLayout)
+        add(paging)
+        add(retrofit)
+        add(okhttp)
+        add(okhttpLogging)
+        add(moshiConverter)
+        add(coroutinesCore)
+        add(coroutinesAndroid)
+        add(glide)
+        add(glideAnnotation)
+        add(lifecycleRuntimeKtx)
+        add(lifecycleViewModelKtx)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

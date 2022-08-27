@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PagingMovieExample</string>
+    <string name="popularity">Popularity : %s</string>
 </resources>
