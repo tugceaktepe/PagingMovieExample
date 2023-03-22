@@ -1,24 +1,31 @@
-package com.aktepetugce.pagingmovieexample.data.datasource
+package com.aktepetugce.pagingmovieexample.data.datasource.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.aktepetugce.pagingmovieexample.data.RetrofitService
 import com.aktepetugce.pagingmovieexample.data.model.Movie
+import com.aktepetugce.pagingmovieexample.data.repo.MovieApi
 import kotlinx.coroutines.delay
+import retrofit2.HttpException
+import java.io.IOException
+import javax.inject.Inject
 
-class MoviePagingDatasource(private val apiService: RetrofitService) : PagingSource<Int, Movie>() {
+class MoviePagingDatasource @Inject constructor(private val movieApi: MovieApi) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val start = params.key ?: STARTING_KEY
             if (start != STARTING_KEY) delay(LOAD_DELAY_MILLIS)
-            val response = apiService.getTopRatedMovies(language = "en-US", page = start)
+            val response = movieApi.getTopRatedMovies(language = "en-US", page = start)
+            val prevKey = if (start == 1) null else start - 1
+            val nextKey = start + 1
             LoadResult.Page(
-                data = response.body()!!.results,
-                prevKey = if (start == 1) null else start - 1,
-                nextKey = start + 1)
-        } catch (e: Exception) {
-            LoadResult.Error(e)
+                data = response.results,
+                prevKey = prevKey,
+                nextKey = nextKey)
+        } catch (exception: IOException) {
+            LoadResult.Error(exception)
+        } catch (exception: HttpException) {
+            LoadResult.Error(exception)
         }
     }
 

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">PagingMovieExample</string>
     <string name="popularity">Popularity : %s</string>
+    <string name="error_text">Unknown error occured while loading movies</string>
+    <string name="retry">Retry</string>
 </resources>
