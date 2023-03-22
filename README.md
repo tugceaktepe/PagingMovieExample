@@ -23,6 +23,7 @@ Util package includes format function for decimal parts of popularity value of a
 * View Binding
 * ViewModel
 * Kotlin Flow, Coroutines
+* Hilt
 
 ## TODOs and Improvements
 * Fix of Performance Issues
