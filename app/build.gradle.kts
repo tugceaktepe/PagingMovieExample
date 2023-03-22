@@ -1,11 +1,12 @@
-import AppConfig.compileSdk
-
 plugins {
     id(Plugins.androidApplication)
     id(Plugins.kotlinAndroid)
+    id(Plugins.kotlinKapt)
+    id(Plugins.hilt)
 }
 
 android {
+    namespace = "com.aktepetugce.pagingmovieexample"
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
@@ -35,8 +36,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        android.buildFeatures.viewBinding = true
+    buildFeatures {
+        viewBinding = true
     }
 
     flavorDimensions.add(AppConfig.dimension)
@@ -54,6 +55,10 @@ android {
 dependencies {
     //app libs
     implementation(Dependencies.appLibraries)
+
+    //kapt
+    kapt(Dependencies.kaptLibraries)
+
     //test libs
     testImplementation(Dependencies.testLibraries)
     androidTestImplementation(Dependencies.androidTestLibraries)

@@ -28,6 +28,20 @@ object Dependencies {
     private val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     private val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
+    //Hilt
+    private val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    private val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+
+    //Activity
+    private val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
+
+    //Room
+    private val room = "androidx.room:room-runtime:${Versions.room}"
+    private val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+
+    //SwipeRefreshLayout
+    private val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
+
     //test libs
     private val junit = "junit:junit:${Versions.junit}"
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
@@ -49,6 +63,15 @@ object Dependencies {
         add(glideAnnotation)
         add(lifecycleRuntimeKtx)
         add(lifecycleViewModelKtx)
+        add(hilt)
+        add(activityKtx)
+        add(swipeRefreshLayout)
+        add(room)
+    }
+
+    val kaptLibraries = arrayListOf<String>().apply {
+        add(hiltCompiler)
+        add(roomCompiler)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {
@@ -58,30 +81,5 @@ object Dependencies {
 
     val testLibraries = arrayListOf<String>().apply {
         add(junit)
-    }
-}
-
-//util functions for adding the different type dependencies from build.gradle file
-fun DependencyHandler.kapt(list: List<String>) {
-    list.forEach { dependency ->
-        add("kapt", dependency)
-    }
-}
-
-fun DependencyHandler.implementation(list: List<String>) {
-    list.forEach { dependency ->
-        add("implementation", dependency)
-    }
-}
-
-fun DependencyHandler.androidTestImplementation(list: List<String>) {
-    list.forEach { dependency ->
-        add("androidTestImplementation", dependency)
-    }
-}
-
-fun DependencyHandler.testImplementation(list: List<String>) {
-    list.forEach { dependency ->
-        add("testImplementation", dependency)
     }
 }
