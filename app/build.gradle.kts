@@ -62,5 +62,6 @@ dependencies {
     //test libs
     testImplementation(Dependencies.testLibraries)
     androidTestImplementation(Dependencies.androidTestLibraries)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${Versions.hilt}")
 }
 

@@ -46,6 +46,8 @@ object Dependencies {
     private val junit = "junit:junit:${Versions.junit}"
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    private val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hilt}"
+    private val androidXTesting = "androidx.test:core-ktx:${Versions.androidxTesting}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(coreKtx)
@@ -77,6 +79,8 @@ object Dependencies {
     val androidTestLibraries = arrayListOf<String>().apply {
         add(extJUnit)
         add(espressoCore)
+        add(hiltTesting)
+        add(androidXTesting)
     }
 
     val testLibraries = arrayListOf<String>().apply {

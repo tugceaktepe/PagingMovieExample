@@ -17,5 +17,4 @@ class MovieViewModel @Inject constructor(private val movieRepository: MovieRepos
     fun getAllMovies(): Flow<PagingData<Movie>> {
         return movieRepository.getAllMovies().cachedIn(viewModelScope)
     }
-
 }

@@ -26,4 +26,5 @@ object Versions {
     val junit = "4.13.1"
     val extJunit = "1.1.3"
     val espresso = "3.4.0"
+    val androidxTesting = "1.5.0"
 }
