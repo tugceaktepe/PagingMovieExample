@@ -34,7 +34,7 @@ class MoviePagingAdapter : PagingDataAdapter<Movie, MoviePagingAdapter.MovieView
         return MovieViewHolder(binding)
     }
 
-    class MovieDiffUtilCallback() : DiffUtil.ItemCallback<Movie>(){
+    class MovieDiffUtilCallback : DiffUtil.ItemCallback<Movie>(){
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem.title == newItem.title
         }
