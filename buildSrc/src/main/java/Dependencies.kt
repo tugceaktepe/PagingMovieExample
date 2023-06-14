@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.dsl.DependencyHandler
-
 object Dependencies {
     //android ui
     private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
@@ -35,10 +33,6 @@ object Dependencies {
     //Activity
     private val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
 
-    //Room
-    private val room = "androidx.room:room-runtime:${Versions.room}"
-    private val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-
     //SwipeRefreshLayout
     private val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
 
@@ -48,6 +42,7 @@ object Dependencies {
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     private val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hilt}"
     private val androidXTesting = "androidx.test:core-ktx:${Versions.androidxTesting}"
+    private val idlingResources = "androidx.test.espresso:espresso-idling-resource:${Versions.idlingResources}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(coreKtx)
@@ -68,12 +63,11 @@ object Dependencies {
         add(hilt)
         add(activityKtx)
         add(swipeRefreshLayout)
-        add(room)
+        add(idlingResources)
     }
 
     val kaptLibraries = arrayListOf<String>().apply {
         add(hiltCompiler)
-        add(roomCompiler)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {
