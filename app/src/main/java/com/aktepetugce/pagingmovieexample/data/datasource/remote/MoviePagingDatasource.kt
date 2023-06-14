@@ -25,7 +25,8 @@ class MoviePagingDatasource @Inject constructor(private val movieApi: MovieApi) 
         } catch (exception: IOException) {
             LoadResult.Error(exception)
         } catch (exception: HttpException) {
-            LoadResult.Error(exception)
+            val message = exception.response()?.errorBody()?.string()
+            LoadResult.Error(Throwable(message ?: GENERAL_ERROR_MESSAGE))
         }
     }
 
@@ -39,6 +40,7 @@ class MoviePagingDatasource @Inject constructor(private val movieApi: MovieApi) 
     companion object{
         private const val STARTING_KEY = 1
         private const val LOAD_DELAY_MILLIS = 500L
+        private const val GENERAL_ERROR_MESSAGE = "We are currently unable to process your request."
     }
 
 }
