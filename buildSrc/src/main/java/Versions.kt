@@ -20,7 +20,7 @@ object Versions {
     val lifeCycle = "2.5.1"
     val activity = "1.6.1"
     val swipeRefreshLayout = "1.1.0"
-    val room = "2.5.1"
+    val idlingResources = "3.4.0"
 
     //test
     val junit = "4.13.1"
