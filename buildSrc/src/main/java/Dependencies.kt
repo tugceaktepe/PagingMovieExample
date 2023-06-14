@@ -41,7 +41,10 @@ object Dependencies {
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     private val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hilt}"
-    private val androidXTesting = "androidx.test:core-ktx:${Versions.androidxTesting}"
+    private val androidXTestCoreKtx = "androidx.test:core-ktx:${Versions.androidXTestCoreKtx}"
+    private val androidXTestRunner = "androidx.test:runner:${Versions.androidXTestRunner}"
+    private val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+    private val okhttpIdling = "com.jakewharton.espresso:okhttp3-idling-resource:${Versions.okhttpIdling}"
     private val idlingResources = "androidx.test.espresso:espresso-idling-resource:${Versions.idlingResources}"
 
     val appLibraries = arrayListOf<String>().apply {
@@ -74,7 +77,10 @@ object Dependencies {
         add(extJUnit)
         add(espressoCore)
         add(hiltTesting)
-        add(androidXTesting)
+        add(androidXTestCoreKtx)
+        add(mockWebServer)
+        add(androidXTestRunner)
+        add(okhttpIdling)
     }
 
     val testLibraries = arrayListOf<String>().apply {

@@ -13,7 +13,7 @@ class MovieLoadStateAdapter(
 ) : LoadStateAdapter<MovieLoadStateAdapter.LoadStateViewHolder>() {
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
-        holder.bind(loadState, retry)
+        holder.bind(loadState)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
@@ -24,9 +24,9 @@ class MovieLoadStateAdapter(
         )
     }
 
-    class LoadStateViewHolder(private val binding: LoadStateLayoutBinding) :
+    inner class LoadStateViewHolder(private val binding: LoadStateLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(loadState: LoadState, retry: () -> Unit){
+        fun bind(loadState: LoadState){
             with(binding) {
                 if (loadState is LoadState.Error) {
                     textViewMessage.text = loadState.error.localizedMessage

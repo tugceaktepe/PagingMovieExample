@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.aktepetugce.pagingmovieexample.databinding.ActivityMainBinding
 import com.aktepetugce.pagingmovieexample.util.extension.hide
 import com.aktepetugce.pagingmovieexample.util.extension.showProgress
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -47,6 +48,14 @@ class MainActivity : AppCompatActivity() {
                     progressBar.showProgress()
                 } else {
                     progressBar.hide()
+                }
+                if(it.refresh is LoadState.Error){
+                    val error = it.refresh as LoadState.Error
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        error.error.message.toString(),
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
                 refreshLayout.isEnabled = it.source.refresh is LoadState.NotLoading
             }
