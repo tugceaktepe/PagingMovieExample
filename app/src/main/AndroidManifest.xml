@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".MovieApplication"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.PagingMovieExample">
         <activity
             android:name=".ui.MainActivity"

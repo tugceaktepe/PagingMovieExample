@@ -35,7 +35,6 @@
 package com.aktepetugce.pagingmovieexample.di
 
 import com.aktepetugce.pagingmovieexample.data.repo.MovieApi
-import com.aktepetugce.pagingmovieexample.util.ApiConstants
 import com.aktepetugce.pagingmovieexample.util.interceptors.NetworkStatusInterceptor
 import dagger.Module
 import dagger.Provides
@@ -68,9 +67,6 @@ object NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create())
     }
 
-    @Provides
-    @Singleton
-    fun provideUrl(): String = ApiConstants.BASE_URL
 
     @Provides
     @Singleton
