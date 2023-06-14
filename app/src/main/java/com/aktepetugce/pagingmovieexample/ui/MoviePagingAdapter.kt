@@ -16,7 +16,8 @@ class MoviePagingAdapter : PagingDataAdapter<Movie, MoviePagingAdapter.MovieView
         fun bind(movie: Movie){
             val context = binding.root.context
             binding.name.text = movie.title
-            binding.popularity.text = context.getString(R.string.popularity, FormatUtil.formatTwoDecimalPlace(movie.popularity ?: 0.0))
+            binding.popularity.text =
+                context.getString(R.string.popularity, FormatUtil.formatTwoDecimalPlace(movie.popularity ?: 0.0))
             Glide.with(binding.root.context).load("https://image.tmdb.org/t/p/w300"+movie.posterUrl).into(binding.image)
         }
     }

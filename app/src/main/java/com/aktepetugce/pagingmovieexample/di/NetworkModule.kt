@@ -49,7 +49,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ApiModule {
+object NetworkModule {
 
     @Provides
     @Singleton
@@ -61,12 +61,16 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit.Builder {
+    fun provideRetrofit(okHttpClient: OkHttpClient, url:String): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl(ApiConstants.BASE_URL)
+            .baseUrl(url)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
     }
+
+    @Provides
+    @Singleton
+    fun provideUrl(): String = ApiConstants.BASE_URL
 
     @Provides
     @Singleton
