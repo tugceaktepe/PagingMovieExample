@@ -12,8 +12,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.aktepetugce.pagingmovieexample.di.UrlModule
 import com.aktepetugce.pagingmovieexample.ui.MainActivity
 import com.aktepetugce.pagingmovieexample.util.Constants
-import com.aktepetugce.pagingmovieexample.util.MockServerDispatcher
-import com.aktepetugce.pagingmovieexample.util.testing.TestIdlingResource
+import com.aktepetugce.pagingmovieexample.util.MockWebServerDispatcher
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.Module
 import dagger.Provides
@@ -55,14 +54,13 @@ class MainActivityTest {
         hiltRule.inject()
         okHttp3IdlingResource = OkHttp3IdlingResource.create("okhttp", okHttp)
         IdlingRegistry.getInstance().register(okHttp3IdlingResource)
-        IdlingRegistry.getInstance().register(TestIdlingResource.countingIdlingResource)
         mockWebServer.start(8080)
     }
 
 
     @Test
     fun screenIsReady() {
-        mockWebServer.dispatcher = MockServerDispatcher().RequestDispatcher()
+        mockWebServer.dispatcher = MockWebServerDispatcher().RequestDispatcher()
         val scenario = launchActivity<MainActivity>()
         onView(withId(R.id.recyclerViewMovies)).check { view, noViewFoundException ->
             if (noViewFoundException != null) {
@@ -76,7 +74,7 @@ class MainActivityTest {
 
     @Test
     fun showErrorWhenMovieLoadFailed() {
-        mockWebServer.dispatcher = MockServerDispatcher().ErrorDispatcher()
+        mockWebServer.dispatcher = MockWebServerDispatcher().ErrorDispatcher()
         val scenario = launchActivity<MainActivity>()
         onView(withText(Constants.ERROR_MESSAGE)).check(matches(isDisplayed()))
         scenario.close()
@@ -95,7 +93,6 @@ class MainActivityTest {
     fun teardown() {
         mockWebServer.shutdown()
         IdlingRegistry.getInstance().unregister(okHttp3IdlingResource)
-        IdlingRegistry.getInstance().unregister(TestIdlingResource.countingIdlingResource)
     }
 
 
