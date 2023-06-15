@@ -7,14 +7,17 @@ PagingMovieExample is a simple movie list application. I'm using **TMDB** API as
 I'm trying to follow clean architecture principles and MVVM design pattern. The folder structure is as follows : 
 
 
-### Data
+### data
 Data package includes data model, paging data source and repository classes.
 
-### UI
+### di
+DI package includes dependency injections provided via Hilt.
+
+### ui
 UI package includes Activity, Adapter and ViewModel classes.
 
-### Util
-Util package includes format function for decimal parts of popularity value of a movie.
+### util
+Util package includes utility classes.
 
 
 ## Technology
@@ -24,16 +27,5 @@ Util package includes format function for decimal parts of popularity value of a
 * ViewModel
 * Kotlin Flow, Coroutines
 * Hilt
-
-## TODOs and Improvements
-* Fix of Performance Issues
-* Maintenance using Clean Architecture Rules
-* Dependency Injection 
-* Additional Features
-* UI Design
-* Unit Tests
-* Instrumentation Tests
-
-
-
-
+* MockWebServer
+* Espresso
